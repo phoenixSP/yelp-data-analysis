@@ -1,0 +1,6 @@
+How to Stand Up BaseX:
+-Download from http://basex.org/download/
+-Unzip
+-jar xvf /path/to/file.jar
+    -- I had to install jar utility (jar xvf /path/to/file.jar)
+- ./basex to run
