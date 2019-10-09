@@ -1,4 +1,5 @@
 /env
-.json
-.tar
-.xml
+*.json
+*.tar
+*.xml
+.DS_Store
