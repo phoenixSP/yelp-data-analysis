@@ -19,9 +19,16 @@ if source[-5:] == '.json':
 source_file = source_dataset_path + source + ".json"
 target_file = target_dataset_path + source + ".xml"
 
+json_dict = []
+#with open(source_file, 'r') as f:
+#	json_dict = json.load(f) #json -> dict
+#	xml = dicttoxml.dicttoxml(json_dict)
+
 with open(source_file, 'r') as f:
-	json_dict = json.load(f) #json -> dict
-	xml = dicttoxml.dicttoxml(json_dict)
+	for line in f:
+		json_dict.append(json.loads(line))
+#	json_dict = json.load(f) #json -> dict
+xml = dicttoxml.dicttoxml(json_dict)
 
 with open(target_file,'wb') as f:
 	f.write(xml)
