@@ -8,20 +8,21 @@ import sys
 source_dataset_path = "../data/dataset_no_nulls/"
 target_dataset_path = "../data/dataset_xml/"
 
-if len(sys.argv) < 0:
-	print("specify source file name!")
-	exit()
+files = ['business', 'tip' , 'review','checkin','tip','user','photo']
+#files = ['business', 'tip']
+for f in files:
+	print("-----Running "+f+" -----")
 
-source = sys.argv[1]
-if source[-5:] == '.json':
-	source = source[:-5]
-
-source_file = source_dataset_path + source + ".json"
-target_file = target_dataset_path + source + ".xml"
-
-with open(source_file, 'r') as f:
-	json_dict = json.load(f) #json -> dict
-	xml = dicttoxml.dicttoxml(json_dict)
-
-with open(target_file,'wb') as f:
-	f.write(xml)
+	outfile = open(target_dataset_path + f+'.xml', 'wb')
+	outfile.write(str.encode('<?xml version="1.0" encoding="UTF-8" ?>'))
+	outfile.write(str.encode('<root>'))
+	with open(source_dataset_path + f +'_no_nulls.json', "r") as ins:
+		for line in ins:
+			json_obj = json.loads(line)
+			xml = dicttoxml.dicttoxml(json_obj, custom_root='business', root=False)
+			outfile.write(str.encode("<"+f+">\n"))
+			outfile.write(xml)
+			outfile.write(str.encode("</"+f+">\n"))
+	outfile.write(str.encode('</root>'))
+	print("-----Done "+f+" -----")
+	# subprocess.call(['mv',target_dataset_path + f+'_not_nulls.json','cleandata'])
