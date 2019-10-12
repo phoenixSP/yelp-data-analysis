@@ -5,10 +5,12 @@ import sys
 ## how to use: python json_to_xml [filename]
 ## filename could contain .json extension
 
-source_dataset_path = "../data/dataset_no_nulls/"
-target_dataset_path = "../data/dataset_xml/"
+source_dataset_path = "C:/Users/shrey/Pictures/yelp_data_folder"
+target_dataset_path = "C:/Users/shrey/Pictures/yelp_xml_folder"
 
-files = ['business', 'tip' , 'review','checkin','tip','user','photo']
+#files = ['business', 'tip' , 'review','checkin','tip','user','photo']
+files = ['checkin']
+
 for f in files:
 	print("-----Running "+f+" -----")
 	error_counter = 0;

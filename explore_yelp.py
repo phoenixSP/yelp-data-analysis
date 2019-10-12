@@ -76,3 +76,15 @@ user_df = pd.read_json (r"C:/Users/shrey/Pictures/yelp_data_folder/user.json", l
 
 #columns which have null values and their count            
 user_column_null_count = user_df.isnull().sum()
+
+#%%
+
+import os.path
+import time
+
+print("Created: %s" %time.ctime(os.path.getctime("C:/Users/shrey/Pictures/photos/___3eKRa-uA97sdEZTJ9rQ.jpg")))
+
+
+#%%
+
+photo_dir_df = pd.read_json (r"C:/Users/shrey/Pictures/photo.json", lines = True)
