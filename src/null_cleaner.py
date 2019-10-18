@@ -7,8 +7,8 @@ import sys
 ## how to use: python null_cleaner [filename]
 ## filename could contain .json extension
 
-source_dataset_path = "../data/dataset_original/"
-target_dataset_path = "../data/dataset_no_nulls/"
+source_dataset_path = "/home/pal00007/Documents/big_data/data/"
+target_dataset_path = "/home/pal00007/Documents/big_data/data_null/"
 
 if len(sys.argv) < 0:
 	print("specify source file name!")

@@ -5,16 +5,17 @@ import sys
 ## how to use: python json_to_xml [filename]
 ## filename could contain .json extension
 
-source_dataset_path = "../data/dataset_no_nulls/"
-target_dataset_path = "../data/dataset_xml/"
+source_dataset_path = "/home/pal00007/Documents/big_data/data_null/"
+target_dataset_path = "/home/pal00007/Documents/big_data/data_xml/"
 
-files = ['business', 'tip' , 'review','checkin','tip','user','photo']
+files = ['checkin']
 for f in files:
 	print("-----Running "+f+" -----")
 	error_counter = 0;
 	outfile = open(target_dataset_path + f+'.xml', 'wb')
 	outfile.write(str.encode('<?xml version="1.0" encoding="UTF-8" ?>'))
 	outfile.write(str.encode('<root>'))
+#    with open(source_dataset_path + f +'_no_nulls.json', "r") as ins:
 	with open(source_dataset_path + f +'_no_nulls.json', "r") as ins:
 		for line in ins:
 			try:

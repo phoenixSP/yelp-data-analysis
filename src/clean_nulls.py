@@ -4,11 +4,14 @@ import pandas as pd
 import subprocess
 import os
 
-source_dataset_path = "../data/dataset_original/"
-target_dataset_path = "../data/dataset_no_nulls/"
+source_dataset_path = "/home/pal00007/Documents/big_data/data/"
+target_dataset_path = "/home/pal00007/Documents/big_data/data_null/"
 
 #subprocess.call(['mkdir','cleandata'])
-files = ['business', 'tip' , 'review','checkin','tip','user','photo']
+#files = ['business', 'tip' , 'review','checkin','tip','user','photo']
+
+files = ['checkin']
+
 for f in files:
     print("-----Running "+f+" -----")
     print(f+".json size with NULLs: "+str(os.path.getsize(source_dataset_path + f +'.json')))

@@ -76,3 +76,20 @@ user_df = pd.read_json (r"C:/Users/shrey/Pictures/yelp_data_folder/user.json", l
 
 #columns which have null values and their count            
 user_column_null_count = user_df.isnull().sum()
+
+
+#%%
+
+photos_df = pd.read_json("/home/pal00007/Documents/big_data/data/photo.json", lines = True)
+
+#%%
+import os.path
+import time
+print("Last modified: %s" % time.ctime(os.path.getmtime("/home/pal00007/Downloads/photos/Zz_Z_zdp-DmHl32kya81wQ.jpg")))
+print("Created: %s" % time.ctime(os.path.getctime("/home/pal00007/Downloads/photos/Zz_Z_zdp-DmHl32kya81wQ.jpg")))
+
+#%%
+
+print("Last modified: %s" % time.ctime(os.path.getmtime("/home/pal00007/Downloads/photos/Kly6oql6von9B2ZtdJZ-lA.jpg")))
+print("Created: %s" % time.ctime(os.path.getctime("/home/pal00007/Downloads/photos/Kly6oql6von9B2ZtdJZ-lA.jpg")))
+
