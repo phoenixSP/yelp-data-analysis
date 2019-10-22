@@ -10,4 +10,5 @@ let $s :=(
 		return $tmp
 	)
 let $total :=  math:pow( (sum($s) div count($data) ),0.5)
+
 return $total
