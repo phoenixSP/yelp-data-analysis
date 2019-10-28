@@ -1,6 +1,10 @@
+
+
 let $all_business := /root/business
 
-for $business in $all_business where $business//is_open = 1
+
+let $business_element := (
+  for $business in $all_business where $business//is_open = 1
   return 
   <business> 
   <business_id type="str">{$business//business_id}</business_id>
@@ -11,4 +15,8 @@ for $business in $all_business where $business//is_open = 1
   <review_count type="int">{$business//review_count}</review_count>
   <categories type="str">{$business//categories}</categories>
   </business>
+)
+  
+  return <root>{$business_element}</root>
+
   
