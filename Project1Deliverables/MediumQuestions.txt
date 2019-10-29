@@ -1,0 +1,4 @@
+1) How does a restaurant in one metropolitan area compare to the same business in another area (assuming they are a chain)?
+2) Which users are considered more reliable reviewers?
+
+4) Which businesses have higher/lower rating in terms of business category?
