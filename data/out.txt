@@ -1,0 +1,411 @@
+                                           antecedents  \
+0                                        (Accessories)   
+1                                        (Accessories)   
+2                              (Fitness & Instruction)   
+3                                               (Gyms)   
+4                                           (Trainers)   
+5                                     (American (New))   
+6                             (American (Traditional))   
+7                                         (Apartments)   
+8                                         (Apartments)   
+9                                      (Arts & Crafts)   
+10                                      (Asian Fusion)   
+11                             (Auto Parts & Supplies)   
+12                                       (Auto Repair)   
+13                                       (Car Dealers)   
+14                               (Oil Change Stations)   
+15                                             (Tires)   
+16                                          (Bakeries)   
+17                                           (Barbers)   
+18                                              (Bars)   
+19                                              (Pubs)   
+20                                       (Sports Bars)   
+21                         (Cosmetics & Beauty Supply)   
+22                                          (Day Spas)   
+23                                   (Eyelash Service)   
+24                                      (Hair Removal)   
+25                                       (Hair Salons)   
+26                                     (Hair Stylists)   
+27                                           (Massage)   
+28                                       (Nail Salons)   
+29                                         (Skin Care)   
+30                                            (Waxing)   
+31                                              (Beer)   
+32                                    (Wine & Spirits)   
+33                                              (Beer)   
+34                                (Breakfast & Brunch)   
+35                                           (Burgers)   
+36                                             (Cafes)   
+37                                    (Canadian (New))   
+38                                          (Caterers)   
+39                                     (Chicken Wings)   
+40                                           (Chinese)   
+41                                     (Chiropractors)   
+42                                      (Coffee & Tea)   
+43                                       (Contractors)   
+44                                (Convenience Stores)   
+45                                 (Cosmetic Dentists)   
+46                                 (Cosmetic Dentists)   
+47                         (Cosmetics & Beauty Supply)   
+48                                             (Delis)   
+49                                 (General Dentistry)   
+50                                          (Dentists)   
+51                                 (Department Stores)   
+52                                 (Department Stores)   
+53                                          (Desserts)   
+54                                           (Doctors)   
+55                                        (Drugstores)   
+56                                       (Electronics)   
+57                                            (Hotels)   
+58                             (Venues & Event Spaces)   
+59                                    (Men's Clothing)   
+60                                           (Fashion)   
+61                                  (Women's Clothing)   
+62                                         (Fast Food)   
+63                                              (Gyms)   
+64                                          (Trainers)   
+65                                   (Flowers & Gifts)   
+66                                           (Grocery)   
+67                         (Ice Cream & Frozen Yogurt)   
+68                            (Juice Bars & Smoothies)   
+69                                    (Specialty Food)   
+70                                    (Wine & Spirits)   
+71                                  (Furniture Stores)   
+72                                  (Furniture Stores)   
+73                                 (General Dentistry)   
+74                                            (Waxing)   
+75                                     (Hair Stylists)   
+76                                   (Massage Therapy)   
+77                                   (Medical Centers)   
+78                   (Heating & Air Conditioning/HVAC)   
+79                                        (Home Decor)   
+80                                     (Home & Garden)   
+81                                        (Home Decor)   
+82                                       (Real Estate)   
+83                                            (Hotels)   
+84                     (IT Services & Computer Repair)   
+85                                           (Italian)   
+86                                          (Japanese)   
+87                                           (Jewelry)   
+88                                    (Men's Clothing)   
+89                                           (Mexican)   
+90                                              (Pubs)   
+91                                       (Sports Bars)   
+92                                             (Pizza)   
+93                                             (Salad)   
+94                                        (Sandwiches)   
+95                                           (Seafood)   
+96                                        (Sushi Bars)   
+97                                    (Sporting Goods)   
+98                                  (Women's Clothing)   
+99                             (Shopping, Accessories)   
+100                             (Accessories, Fashion)   
+101                                      (Accessories)   
+102                                (Active Life, Gyms)   
+103                      (Gyms, Fitness & Instruction)   
+104                                             (Gyms)   
+105                            (Active Life, Trainers)   
+106                  (Fitness & Instruction, Trainers)   
+107                                         (Trainers)   
+108                                   (Gyms, Trainers)   
+109                             (Bars, American (New))   
+110                             (Bars, American (New))   
+111                        (American (New), Nightlife)   
+112                     (American (Traditional), Bars)   
+113                     (American (Traditional), Bars)   
+114       (American (Traditional), Breakfast & Brunch)   
+115                (American (Traditional), Nightlife)   
+116                        (Apartments, Home Services)   
+117                          (Apartments, Real Estate)   
+118                                       (Apartments)   
+119                 (Oil Change Stations, Auto Repair)   
+120                               (Tires, Auto Repair)   
+121                            (Bakeries, Restaurants)   
+122                                       (Bars, Food)   
+123                                       (Pubs, Bars)   
+124                                  (Pubs, Nightlife)   
+125                                             (Pubs)   
+126                                (Restaurants, Bars)   
+127                                (Sports Bars, Bars)   
+128                           (Sports Bars, Nightlife)   
+129                                      (Sports Bars)   
+130                         (Sports Bars, Restaurants)   
+131              (Shopping, Cosmetics & Beauty Supply)   
+132         (Cosmetics & Beauty Supply, Beauty & Spas)   
+133                        (Cosmetics & Beauty Supply)   
+134                        (Hair Removal, Nail Salons)   
+135                          (Hair Removal, Skin Care)   
+136                             (Hair Removal, Waxing)   
+137                            (Waxing, Beauty & Spas)   
+138                                           (Waxing)   
+139                       (Hair Stylists, Hair Salons)   
+140                     (Hair Stylists, Beauty & Spas)   
+141                                    (Hair Stylists)   
+142                        (Massage, Health & Medical)   
+143                             (Wine & Spirits, Beer)   
+144                             (Wine & Spirits, Food)   
+145                                       (Beer, Food)   
+146                                   (Wine & Spirits)   
+147                                             (Beer)   
+148                         (Breakfast & Brunch, Food)   
+149                               (Fast Food, Burgers)   
+150                                    (Food, Burgers)   
+151                                      (Food, Cafes)   
+152                            (Caterers, Restaurants)   
+153                        (Coffee & Tea, Restaurants)   
+154             (General Dentistry, Cosmetic Dentists)   
+155                      (Dentists, Cosmetic Dentists)   
+156              (Cosmetic Dentists, Health & Medical)   
+157                                (Cosmetic Dentists)   
+158             (General Dentistry, Cosmetic Dentists)   
+159                      (Dentists, General Dentistry)   
+160              (General Dentistry, Health & Medical)   
+161                                (General Dentistry)   
+162                      (Shopping, Department Stores)   
+163                       (Department Stores, Fashion)   
+164                                (Department Stores)   
+165                            (Restaurants, Desserts)   
+166                (Event Planning & Services, Hotels)   
+167                          (Hotels, Hotels & Travel)   
+168                                           (Hotels)   
+169                         (Shopping, Men's Clothing)   
+170                          (Men's Clothing, Fashion)   
+171                                   (Men's Clothing)   
+172                       (Shopping, Women's Clothing)   
+173                        (Fashion, Women's Clothing)   
+174                                 (Women's Clothing)   
+175                                  (Fast Food, Food)   
+176                                   (Gyms, Trainers)   
+177                                 (Sandwiches, Food)   
+178                      (Restaurants, Specialty Food)   
+179                       (Shopping, Furniture Stores)   
+180                  (Furniture Stores, Home & Garden)   
+181                                 (Furniture Stores)   
+182                             (Shopping, Home Decor)   
+183                        (Home Decor, Home & Garden)   
+184                                       (Home Decor)   
+185                     (Home & Garden, Home Services)   
+186                                   (Pizza, Italian)   
+187                         (Sports Bars, Restaurants)   
+188                      (Active Life, Gyms, Trainers)   
+189            (Gyms, Fitness & Instruction, Trainers)   
+190                                   (Gyms, Trainers)   
+191                (Restaurants, Bars, American (New))   
+192                  (Bars, American (New), Nightlife)   
+193                             (Bars, American (New))   
+194        (American (Traditional), Restaurants, Bars)   
+195          (American (Traditional), Bars, Nightlife)   
+196                     (American (Traditional), Bars)   
+197                          (Restaurants, Bars, Food)   
+198                   (Sports Bars, Restaurants, Bars)   
+199              (Sports Bars, Restaurants, Nightlife)   
+200                         (Sports Bars, Restaurants)   
+201   (Dentists, General Dentistry, Cosmetic Dentists)   
+202  (General Dentistry, Cosmetic Dentists, Health ...   
+203             (General Dentistry, Cosmetic Dentists)   
+
+                                      consequents  confidence  
+0                                       (Fashion)         1.0  
+1                                      (Shopping)         1.0  
+2                                   (Active Life)         1.0  
+3                                   (Active Life)         1.0  
+4                                   (Active Life)         1.0  
+5                                   (Restaurants)         1.0  
+6                                   (Restaurants)         1.0  
+7                                 (Home Services)         1.0  
+8                                   (Real Estate)         1.0  
+9                                      (Shopping)         1.0  
+10                                  (Restaurants)         1.0  
+11                                   (Automotive)         1.0  
+12                                   (Automotive)         1.0  
+13                                   (Automotive)         1.0  
+14                                   (Automotive)         1.0  
+15                                   (Automotive)         1.0  
+16                                         (Food)         1.0  
+17                                (Beauty & Spas)         1.0  
+18                                    (Nightlife)         1.0  
+19                                         (Bars)         1.0  
+20                                         (Bars)         1.0  
+21                                (Beauty & Spas)         1.0  
+22                                (Beauty & Spas)         1.0  
+23                                (Beauty & Spas)         1.0  
+24                                (Beauty & Spas)         1.0  
+25                                (Beauty & Spas)         1.0  
+26                                (Beauty & Spas)         1.0  
+27                                (Beauty & Spas)         1.0  
+28                                (Beauty & Spas)         1.0  
+29                                (Beauty & Spas)         1.0  
+30                                (Beauty & Spas)         1.0  
+31                                         (Food)         1.0  
+32                                         (Beer)         1.0  
+33                               (Wine & Spirits)         1.0  
+34                                  (Restaurants)         1.0  
+35                                  (Restaurants)         1.0  
+36                                  (Restaurants)         1.0  
+37                                  (Restaurants)         1.0  
+38                    (Event Planning & Services)         1.0  
+39                                  (Restaurants)         1.0  
+40                                  (Restaurants)         1.0  
+41                             (Health & Medical)         1.0  
+42                                         (Food)         1.0  
+43                                (Home Services)         1.0  
+44                                         (Food)         1.0  
+45                                     (Dentists)         1.0  
+46                             (Health & Medical)         1.0  
+47                                     (Shopping)         1.0  
+48                                  (Restaurants)         1.0  
+49                                     (Dentists)         1.0  
+50                             (Health & Medical)         1.0  
+51                                      (Fashion)         1.0  
+52                                     (Shopping)         1.0  
+53                                         (Food)         1.0  
+54                             (Health & Medical)         1.0  
+55                                     (Shopping)         1.0  
+56                                     (Shopping)         1.0  
+57                    (Event Planning & Services)         1.0  
+58                    (Event Planning & Services)         1.0  
+59                                      (Fashion)         1.0  
+60                                     (Shopping)         1.0  
+61                                      (Fashion)         1.0  
+62                                  (Restaurants)         1.0  
+63                        (Fitness & Instruction)         1.0  
+64                        (Fitness & Instruction)         1.0  
+65                                     (Shopping)         1.0  
+66                                         (Food)         1.0  
+67                                         (Food)         1.0  
+68                                         (Food)         1.0  
+69                                         (Food)         1.0  
+70                                         (Food)         1.0  
+71                                (Home & Garden)         1.0  
+72                                     (Shopping)         1.0  
+73                             (Health & Medical)         1.0  
+74                                 (Hair Removal)         1.0  
+75                                  (Hair Salons)         1.0  
+76                             (Health & Medical)         1.0  
+77                             (Health & Medical)         1.0  
+78                                (Home Services)         1.0  
+79                                (Home & Garden)         1.0  
+80                                     (Shopping)         1.0  
+81                                     (Shopping)         1.0  
+82                                (Home Services)         1.0  
+83                              (Hotels & Travel)         1.0  
+84                               (Local Services)         1.0  
+85                                  (Restaurants)         1.0  
+86                                  (Restaurants)         1.0  
+87                                     (Shopping)         1.0  
+88                                     (Shopping)         1.0  
+89                                  (Restaurants)         1.0  
+90                                    (Nightlife)         1.0  
+91                                    (Nightlife)         1.0  
+92                                  (Restaurants)         1.0  
+93                                  (Restaurants)         1.0  
+94                                  (Restaurants)         1.0  
+95                                  (Restaurants)         1.0  
+96                                  (Restaurants)         1.0  
+97                                     (Shopping)         1.0  
+98                                     (Shopping)         1.0  
+99                                      (Fashion)         1.0  
+100                                    (Shopping)         1.0  
+101                           (Shopping, Fashion)         1.0  
+102                       (Fitness & Instruction)         1.0  
+103                                 (Active Life)         1.0  
+104          (Active Life, Fitness & Instruction)         1.0  
+105                       (Fitness & Instruction)         1.0  
+106                                 (Active Life)         1.0  
+107          (Active Life, Fitness & Instruction)         1.0  
+108                                 (Active Life)         1.0  
+109                                   (Nightlife)         1.0  
+110                                 (Restaurants)         1.0  
+111                                 (Restaurants)         1.0  
+112                                   (Nightlife)         1.0  
+113                                 (Restaurants)         1.0  
+114                                 (Restaurants)         1.0  
+115                                 (Restaurants)         1.0  
+116                                 (Real Estate)         1.0  
+117                               (Home Services)         1.0  
+118                  (Home Services, Real Estate)         1.0  
+119                                  (Automotive)         1.0  
+120                                  (Automotive)         1.0  
+121                                        (Food)         1.0  
+122                                   (Nightlife)         1.0  
+123                                   (Nightlife)         1.0  
+124                                        (Bars)         1.0  
+125                             (Bars, Nightlife)         1.0  
+126                                   (Nightlife)         1.0  
+127                                   (Nightlife)         1.0  
+128                                        (Bars)         1.0  
+129                             (Bars, Nightlife)         1.0  
+130                                        (Bars)         1.0  
+131                               (Beauty & Spas)         1.0  
+132                                    (Shopping)         1.0  
+133                     (Shopping, Beauty & Spas)         1.0  
+134                               (Beauty & Spas)         1.0  
+135                               (Beauty & Spas)         1.0  
+136                               (Beauty & Spas)         1.0  
+137                                (Hair Removal)         1.0  
+138                 (Hair Removal, Beauty & Spas)         1.0  
+139                               (Beauty & Spas)         1.0  
+140                                 (Hair Salons)         1.0  
+141                  (Beauty & Spas, Hair Salons)         1.0  
+142                               (Beauty & Spas)         1.0  
+143                                        (Food)         1.0  
+144                                        (Beer)         1.0  
+145                              (Wine & Spirits)         1.0  
+146                                  (Beer, Food)         1.0  
+147                        (Wine & Spirits, Food)         1.0  
+148                                 (Restaurants)         1.0  
+149                                 (Restaurants)         1.0  
+150                                 (Restaurants)         1.0  
+151                                 (Restaurants)         1.0  
+152                   (Event Planning & Services)         1.0  
+153                                        (Food)         1.0  
+154                                    (Dentists)         1.0  
+155                            (Health & Medical)         1.0  
+156                                    (Dentists)         1.0  
+157                  (Dentists, Health & Medical)         1.0  
+158                            (Health & Medical)         1.0  
+159                            (Health & Medical)         1.0  
+160                                    (Dentists)         1.0  
+161                  (Dentists, Health & Medical)         1.0  
+162                                     (Fashion)         1.0  
+163                                    (Shopping)         1.0  
+164                           (Shopping, Fashion)         1.0  
+165                                        (Food)         1.0  
+166                             (Hotels & Travel)         1.0  
+167                   (Event Planning & Services)         1.0  
+168  (Event Planning & Services, Hotels & Travel)         1.0  
+169                                     (Fashion)         1.0  
+170                                    (Shopping)         1.0  
+171                           (Shopping, Fashion)         1.0  
+172                                     (Fashion)         1.0  
+173                                    (Shopping)         1.0  
+174                           (Shopping, Fashion)         1.0  
+175                                 (Restaurants)         1.0  
+176                       (Fitness & Instruction)         1.0  
+177                                 (Restaurants)         1.0  
+178                                        (Food)         1.0  
+179                               (Home & Garden)         1.0  
+180                                    (Shopping)         1.0  
+181                     (Shopping, Home & Garden)         1.0  
+182                               (Home & Garden)         1.0  
+183                                    (Shopping)         1.0  
+184                     (Shopping, Home & Garden)         1.0  
+185                                    (Shopping)         1.0  
+186                                 (Restaurants)         1.0  
+187                                   (Nightlife)         1.0  
+188                       (Fitness & Instruction)         1.0  
+189                                 (Active Life)         1.0  
+190          (Active Life, Fitness & Instruction)         1.0  
+191                                   (Nightlife)         1.0  
+192                                 (Restaurants)         1.0  
+193                      (Restaurants, Nightlife)         1.0  
+194                                   (Nightlife)         1.0  
+195                                 (Restaurants)         1.0  
+196                      (Restaurants, Nightlife)         1.0  
+197                                   (Nightlife)         1.0  
+198                                   (Nightlife)         1.0  
+199                                        (Bars)         1.0  
+200                             (Bars, Nightlife)         1.0  
+201                            (Health & Medical)         1.0  
+202                                    (Dentists)         1.0  
+203                  (Dentists, Health & Medical)         1.0  
