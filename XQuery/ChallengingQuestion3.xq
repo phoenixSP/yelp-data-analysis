@@ -1,6 +1,6 @@
 let $reviews := /root/review
 
-let $words := ("HORRIBLE", "DISAPPOINTED")
+let $words := ("HORRIBLE", "GREAT")
 
 let $result := (
 	for $w in $words
