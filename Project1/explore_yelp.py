@@ -8,7 +8,8 @@ Created on Fri Sep 20 10:19:01 2019
 import pandas as pd
 import numpy as np
 import os
-
+import os.path
+import time
 
 #%%
 data_folder = "/home/pal00007/Documents/big_data/data"
@@ -75,13 +76,8 @@ user_column_null_count = user_df.isnull().sum()
 #checking if photos have their time of creation
 photos_df = pd.read_json("/home/pal00007/Documents/big_data/data/photo.json", lines = True)
 
-
-import os.path
-import time
 print("Last modified: %s" % time.ctime(os.path.getmtime("/home/pal00007/Downloads/photos/Zz_Z_zdp-DmHl32kya81wQ.jpg")))
 print("Created: %s" % time.ctime(os.path.getctime("/home/pal00007/Downloads/photos/Zz_Z_zdp-DmHl32kya81wQ.jpg")))
-
-
 
 print("Last modified: %s" % time.ctime(os.path.getmtime("/home/pal00007/Downloads/photos/Kly6oql6von9B2ZtdJZ-lA.jpg")))
 print("Created: %s" % time.ctime(os.path.getctime("/home/pal00007/Downloads/photos/Kly6oql6von9B2ZtdJZ-lA.jpg")))
