@@ -8,6 +8,16 @@ Created on Sun Oct 27 18:44:42 2019
 
 import xml.etree.ElementTree as ET
 import os
+import pandas as pd
+from mlxtend.preprocessing import TransactionEncoder
+from mlxtend.frequent_patterns import apriori, association_rules
+import time 
+import getpass
+from collections import defaultdict
+
+#%%
+
+st = time.time()
 
 data_folder = "/home/pal00007/Documents/big_data/CSCI5751/data"
 extracted_info = "advanced2.xml"
@@ -42,20 +52,85 @@ for child in tree.iter('categories'):
     all_categories_list.append(cat)
     
     
-    
+    business_latlong
 #%%
-import pandas as pd
-from mlxtend.preprocessing import TransactionEncoder
-from mlxtend.frequent_patterns import apriori, association_rules
 
 
 te = TransactionEncoder()
 te_ary = te.fit(all_categories_list).transform(all_categories_list)
 df = pd.DataFrame(te_ary, columns=te.columns_)
-frequent_itemsets = apriori(df, min_support=0.1, use_colnames=True)   
+frequent_itemsets = apriori(df, min_support=0.01, use_colnames=True)   
+frequent_itemsets['length'] = frequent_itemsets['itemsets'].apply(lambda x: len(x))
+
+#%%
+subset_1 = frequent_itemsets[ (frequent_itemsets['length'] == 1) & (frequent_itemsets['support'] >= 0.01)]
 
 #%%
 
 res = association_rules(frequent_itemsets, metric="confidence", min_threshold=1)
 
 #%%
+res['consequent_len'] = res['consequents'].apply(lambda x: len(x))
+res_1 = res[ (res['consequent support'] >= 0.05) & (res['consequent_len'] == 1) ]
+
+#%%
+
+main_categories = res_1['consequents'].tolist()
+#%%business_latlong
+new_list = []
+for e in main_categories:
+    (x), = e
+    new_list.append(x)
+    
+new_list = set(new_list)
+
+#%%
+
+for i, child in enumerate(tree.iter()):
+    print(i)
+    print(child.tag)
+
+#%%
+root = tree.getroot()
+for child in root: 
+    print(child.tag)
+    for e in child.iter():
+        if e.tag == 'latitude':
+            lat = e.text
+        if e.tag == 'longitude':
+            long = 
+    print(lat)
+        
+#%%
+
+business_latlong = defaultdict(list)
+
+root = tree.getroot()
+for child in root: 
+    categories = set(child.find('categories').text.split(',')) 
+    high_level_category = categories.intersection(new_list)
+    
+    if len(high_level_category) > 0:
+        (high_level_category), = high_level_category
+        lat = child.find('latitude').text
+        long = child.find('longitude').text
+        loc = [lat, long]
+        
+        business_latlong[high_level_category].append(loc)
+#%%
+import json 
+file = json.dumps(business_latlong)
+f = open(os.path.join(data_folder, "business_latlong_json.json"), "w")
+f.write(file)
+f.close()
+
+f = open(os.path.join(data_folder, "business_latlong_txt.txt"), "w")
+f.write(str(business_latlong))
+f.close()
+    
+#%%
+
+#code related to provenance
+et = time.time()
+username = getpass.getuser()
+print(username, "advanced2_processing.py", st, et, file= open('provenance.txt', 'a'))
