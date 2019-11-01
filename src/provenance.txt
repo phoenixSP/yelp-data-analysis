@@ -1,0 +1,2 @@
+pal00007 advanced2_processing.py 1572637520.9544883 1572637542.9254684
+pal00007 advanced2_processing.py creating business_latlong_json.json and business_latlong_text.json 1572637699.2616525 1572637719.8062751

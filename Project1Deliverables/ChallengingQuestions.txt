@@ -104,12 +104,32 @@ for id in checkin_xml.iter():
                 city_count[d] = 0
 print city_count
 
-3) Visualize businesses according to their business categories
+3) Plot the business locations according to their business categories on a map 
 
 
 step 1: extracting the data using xquery
 
+let $all_business := /root/business
+
+
+let $business_element := (
+  for $business in $all_business where $business//is_open = 1
+  return 
+  <business> 
+  {$business//business_id}
+  {$business//name}
+  {$business//latitude}
+  {$business//longitude}
+  {$business//starts}
+  {$business//review_count}
+  {$business//categories}
+  </business>
+)
+  
+  return <root>{$business_element}</root>
+
 step 2: filtering and formating in python
+
 
 step 3: Visualizing the locations of three categories: Food, Automotive and Home Services
 
