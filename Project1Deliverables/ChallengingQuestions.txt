@@ -1,4 +1,67 @@
 1) Why do the different metropolitan areas have different tendencies in which businesses they like/dislike?
+	Step 1. Find chain restaurants by counting businesses with same name
+		#Python Code
+		import json
+		import dicttoxml
+		import sys
+
+		def takeSecond(elem):
+		    return elem[1]
+
+		source_dataset_path = "../data/dataset_no_nulls/"
+		file = "../business_same_name_count.txt"
+		name_cnt = {}
+		with open(source_dataset_path  +'business_no_nulls.json', "r") as ins:
+		    for line in ins:
+		        try:
+		            json_obj = json.loads(line)
+		            if "name" not in json_obj:
+		                continue
+
+		            name = json_obj["name"]
+		            if name not in name_cnt:
+		                name_cnt[name] = 0
+		            name_cnt[name] = name_cnt[name] + 1
+		        except ValueError:
+		            print("err")
+
+		bus_list = []
+		for k, v in name_cnt.items():
+		    bus_list.append((k, v))
+		bus_list.sort(key=takeSecond, reverse=True)
+		with open(file, "w") as out:
+		    for bus in bus_list:
+		        out.write(bus[0] + "," + str(bus[1]) + "\n")
+
+	Step 2. for a given business, find average ratings per state
+	#XQuery Code
+	let  $business := /root/business
+
+	let $bus_with_same_name :=(
+		for $x in $business
+		where $x/name="KFC"
+		return $x
+	)
+
+	let $bus_xml := (
+		let $xml:=(
+		for $x in $bus_with_same_name
+		return
+			<business city="{$x/city}" state="{$x/state}"> {data($x/stars)} </business>)
+		return
+			<BB>
+			{$xml}
+			</BB>
+	)
+
+	let $avg_rating := avg(data($bus_xml/business))
+	let $result :=(
+		for $v in distinct-values($bus_xml/business/@state)
+		return 
+			<state name="{$v}"> {avg(data($bus_xml/business[@state=$v]))} </state>
+		)
+
+	return $result
 
 2) the socioeconomic level of an area based on the number of checkins?
 #XQuery Code to Subset Business and Checkin
