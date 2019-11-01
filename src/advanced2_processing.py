@@ -14,6 +14,7 @@ from mlxtend.frequent_patterns import apriori, association_rules
 import time 
 import getpass
 from collections import defaultdict
+import gmplot 
 
 #%%
 
@@ -90,17 +91,7 @@ for i, child in enumerate(tree.iter()):
     print(i)
     print(child.tag)
 
-#%%
-root = tree.getroot()
-for child in root: 
-    print(child.tag)
-    for e in child.iter():
-        if e.tag == 'latitude':
-            lat = e.text
-        if e.tag == 'longitude':
-            long = 
-    print(lat)
-        
+
 #%%
 
 business_latlong = defaultdict(list)
@@ -127,7 +118,9 @@ f.close()
 f = open(os.path.join(data_folder, "business_latlong_txt.txt"), "w")
 f.write(str(business_latlong))
 f.close()
-    
+#%%
+from mpl_toolkits.basemap import Basemap
+
 #%%
 
 #code related to provenance
