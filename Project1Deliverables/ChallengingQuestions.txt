@@ -1,6 +1,108 @@
 1) Why do the different metropolitan areas have different tendencies in which businesses they like/dislike?
+	Step 1. Find chain restaurants by counting businesses with same name
+		#Python Code
+		import json
+		import dicttoxml
+		import sys
+
+		def takeSecond(elem):
+		    return elem[1]
+
+		source_dataset_path = "../data/dataset_no_nulls/"
+		file = "../business_same_name_count.txt"
+		name_cnt = {}
+		with open(source_dataset_path  +'business_no_nulls.json', "r") as ins:
+		    for line in ins:
+		        try:
+		            json_obj = json.loads(line)
+		            if "name" not in json_obj:
+		                continue
+
+		            name = json_obj["name"]
+		            if name not in name_cnt:
+		                name_cnt[name] = 0
+		            name_cnt[name] = name_cnt[name] + 1
+		        except ValueError:
+		            print("err")
+
+		bus_list = []
+		for k, v in name_cnt.items():
+		    bus_list.append((k, v))
+		bus_list.sort(key=takeSecond, reverse=True)
+		with open(file, "w") as out:
+		    for bus in bus_list:
+		        out.write(bus[0] + "," + str(bus[1]) + "\n")
+
+	Step 2. for a given business, find average ratings per state
+	#XQuery Code
+	let  $business := /root/business
+
+	let $bus_with_same_name :=(
+		for $x in $business
+		where $x/name="KFC"
+		return $x
+	)
+
+	let $bus_xml := (
+		let $xml:=(
+		for $x in $bus_with_same_name
+		return
+			<business city="{$x/city}" state="{$x/state}"> {data($x/stars)} </business>)
+		return
+			<BB>
+			{$xml}
+			</BB>
+	)
+
+	let $avg_rating := avg(data($bus_xml/business))
+	let $result :=(
+		for $v in distinct-values($bus_xml/business/@state)
+		return 
+			<state name="{$v}"> {avg(data($bus_xml/business[@state=$v]))} </state>
+		)
+
+	return $result
 
 2) the socioeconomic level of an area based on the number of checkins?
+#XQuery Code to Subset Business and Checkin
+Business:
+/root/business/city | /root/business/business_id
+Checkin:
+/root/checkin/business_id
+
+#Python Code
+import xml.etree.ElementTree as ET
+business_file = "../business_biz_id.xml"
+business_xml = ET.parse(business_file)
+business_dict = {}
+count = 0
+value = ""
+city = ""
+for e in business_xml.iter():
+    if count == 0:
+        #business_id
+        value = e.text
+        count += 1
+    elif count == 1:
+        #city
+        if e.text in business_dict:
+            business_dict[e.text] = business_dict[e.text] + [value]
+        else:
+            business_dict[e.text] = [value]
+        count = 0
+#dictionary is filled with city:[business_ids]
+checkin_file = "../checkin_biz_id.xml"
+checkin_xml = ET.parse(checkin_file)
+#iterate through checkin ids and count how many checkins for each city
+city_count = {}
+for id in checkin_xml.iter():
+    for d in business_dict:
+        if id.text in business_dict[d]:
+            if d in city_count:
+                city_count[d] = city_count.get(d) + 1
+            else:
+                city_count[d] = 0
+print city_count
 
 3) Visualize businesses according to their business categories
 
@@ -61,3 +163,48 @@
 
 
 5) Can you correlate the Environmental Health Safety Inspection rating for Glendale businesses to their Yelp ratings?
+#XQuery code to subset the business table
+let $lv_bus := /root/business[city eq "Las Vegas"]
+return $lv_bus/city | $lv_bus/state | $lv_bus/stars | $lv_bus/address | $lv_bus/name
+
+#Python Code to Process
+import xml.etree.ElementTree as ET
+import csv
+import json
+glendale_xml_file = '../lv_data.xml'
+glendale_csv_file = '../../../CSCI5751/Project1/Glendale_Data/Restaurant_Inspections.csv'
+#city/name/state/stars/address <- BaseX
+glendale_basex_xml = ET.parse(glendale_xml_file)
+fieldnames = ("Serial Number","Permit Number","Restaurant Name","Location Name","Category Name","Address","City","State","Zip","Current Demerits","Current Grade","Date Current","Inspection Date","Inspection Time","Employee ID","Inspection Type","Inspection Demerits","Inspection Grade","Permit Status","Inspection Result","Violations","Record Updated","Location")
+glendale_csv_json = {}
+with open(glendale_csv_file, 'r') as csvfile:
+    reader = csv.DictReader(csvfile,fieldnames)
+    for row in reader:
+        glendale_csv_json[(row["Address"]).lower()] = row
+count = 0
+value = []
+xml_dict = {}
+for e in glendale_basex_xml.iter():
+    if count == 0:
+        #city
+        value = [e.text]
+        count += 1
+    elif count == 5:
+        if e.text is not None:
+            xml_dict[e.text.encode('utf-8').lower()] = value
+        count = 0
+    else:
+        value += [e.text]
+        count += 1
+grade_dict = {}
+for addr in xml_dict:
+    if addr in glendale_csv_json:
+        if glendale_csv_json[addr]["Current Grade"] not in grade_dict:
+            grade_dict[glendale_csv_json[addr]["Current Grade"]] = [float(xml_dict[addr][4]),1]
+        else:
+            avg = grade_dict[glendale_csv_json[addr]["Current Grade"]][0] * grade_dict[glendale_csv_json[addr]["Current Grade"]][1]
+            grade_dict[glendale_csv_json[addr]["Current Grade"]][1] += 1
+            avg = avg + float(xml_dict[addr][4])
+            avg = avg / grade_dict[glendale_csv_json[addr]["Current Grade"]][1]
+            grade_dict[glendale_csv_json[addr]["Current Grade"]][0] = avg
+print grade_dict
