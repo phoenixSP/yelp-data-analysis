@@ -6,16 +6,12 @@ Created on Fri Sep 20 10:19:01 2019
 """
 
 import pandas as pd
-import json
 import numpy as np
 import os
 
 
 #%%
 data_folder = "/home/pal00007/Documents/big_data/data"
-
-    
-
 
 #%%
 #exploring business.json
