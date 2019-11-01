@@ -1,0 +1,91 @@
+1) What is the range/min/max/average stars for the businesses?
+#XQuery Code
+fn:avg(/root/business/stars)
+fn:max(/root/business/stars)
+fn:min(/root/business/stars)
+
+2) What is the range/min/max/average stars for the reviews?
+#XQuery Code
+fn:avg(/root/review/stars)
+fn:max(/root/review/stars)
+fn:min(/root/review/stars)
+
+3) What is the range/min/max/average review counts for the businesses?
+#XQuery Code
+fn:avg(/root/business/review_count)
+fn:max(/root/business/review_count)
+fn:min(/root/business/review_count)
+
+4) How many of each compliment type does each user have?
+#XQuery Code
+let $totals := for $user in /root/user
+ let $cool := $user/compliment_cool
+ let $cute := $user/compliment_cute
+ let $funny := $user/compliment_funny
+ let $hot := $user/compliment_hot
+ let $list := $user/compliment_list
+ let $more := $user/compliment_more
+ let $note := $user/compliment_note
+ let $photos := $user/compliment_photos
+ let $plain := $user/compliment_plain
+ let $profile := $user/compliment_profile
+ let $writer := $user/compliment_writer
+ return <total>{$cool + $cute + $funny + $hot + $list + $more +
+                $note + $photos + $plain + $profile + $writer}</total>
+let $avg := fn:avg($totals)
+let $min := fn:min($totals)
+let $max := fn:max($totals)
+return <stats><avg>{$avg}</avg><min>{$min}</min><max>{$max}</max><range>{$max - $min}</range></stats>
+
+5) When do people tend to check-in?
+#XQuery Code
+declare function local:GenerateHours($requestBody as element())
+as element()* {
+	let $dtimeStringList := $requestBody/date
+	let $dtimeString := data($dtimeStringList)
+
+	let $hourList :=(
+		for $dateTime in tokenize($dtimeString, ",")
+			let $hour := substring-before($dateTime, ':')
+			let $hour := substring($hour, string-length($hour)-1)
+
+		return
+		<hour> {$hour} </hour>
+	)
+
+	return
+		<HourList>
+		 {$hourList}
+		 </HourList>
+
+};
+
+let  $checkin := /root/checkin
+let $result :=(
+for $c in $checkin
+	let $t:= local:GenerateHours($c)
+	let $resultList :=(
+		for $v in distinct-values(data($t/hour))
+		return
+			<hour name="{$v}"> {count(index-of(data($t/hour), $v))}  </hour>
+	)
+return
+	<business business_id ="{$c/business_id}">
+	{$resultList}
+	</business>
+)
+
+for $v in distinct-values($result/hour/@name)
+order by $v
+return
+	<data hour="{$v}"> {sum(data($result/hour[@name=$v]))}
+	</data>
+
+6) How many NULL values do columns have? Does it make more sense to try to impute the data for those columns or delete the columns?
+#Python Code
+import pandas as pd
+import numpy as np
+files = "../business.json"
+review_df = pd.read_json (files, lines = True)
+review_column_null_count = review_df.isnull().sum()
+print(review_column_null_count)

@@ -1,5 +1,5 @@
 (:
-Are there some attributes that affect on business rating? (if time allows) GRAPH
+How does a restaurant in one metropolitan area compare to the same business in another area (assuming they are a chain)?
 ex: businesses with garage have higher rating than those with no garage
 :)
 let  $business := /root/business
@@ -27,7 +27,6 @@ let $result :=(
 	return 
 		<state name="{$v}"> {avg(data($bus_xml/business[@state=$v]))} </state>
 	)
-
 
 return $result
 
