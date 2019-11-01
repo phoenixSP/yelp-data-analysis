@@ -64,13 +64,87 @@
 	return $result
 
 
-2) Which users are considered more reliable reviewers?
+2) Which users are considered more reliable reviewers (i.e. Which users have more useful/fun/cool reviews (top 5%))?
+#XQuery Code to subset top tier user/funny/cool rated reviewers
+#This process only shows useful, but it is repeated for funny and cool as well
+let  $data := data(/root/review/useful)
+let $mean :=  avg($data)
+let $s :=(
+for $d in $data
+let $tmp := ($d - $mean)*($d - $mean)
+return $tmp
+)
+let $total :=  math:pow( (sum($s) div count($data) ),0.5)
+let $top_percent := 10 * $total
+let $result_id := /root/review[useful >= $top_percent]/review_id
+return <useful>
+<id>{$result_id}</id>
+</useful>
 
-3) Which users have more useful/fun/cool reviews (top 5%)?
+#Python Code
+import numpy as np
+import pandas as pd
+import xml.etree.ElementTree as ET
+files = ["../funny_user_ids.xml", "../useful_user_ids.xml", "../cool_user_ids.xml"]
+funny_useful_cool_ids = []
+for f in files:
+    xml = ET.parse(f)
+    ids = []
+    for elem in xml.iter():
+        ids.append(elem.text)
+    funny_useful_cool_ids.append(ids)
+#dictionary is now filled with files and ID's
+user_file = "../user_name_and_id.xml"
+user_xml = ET.parse(user_file)
+user_dict = {}
+count = 0
+value = ""
+for e in user_xml.iter():
+    if count == 0:
+        value = e.text
+        count += 1
+    elif count == 1:
+        user_dict[e.text] = value
+        count = 0
+funny_people = []
+for id in funny_useful_cool_ids[0]:
+    funny_people.append(user_dict.get(id))
+useful_people = []
+for id in funny_useful_cool_ids[1]:
+    useful_people.append(user_dict.get(id))
+cool_people = []
+for id in funny_useful_cool_ids[2]:
+    cool_people.append(user_dict.get(id))
+funny_people = list(filter(None, funny_people))
+useful_people = list(filter(None, useful_people))
+cool_people = list(filter(None, cool_people))
+print ("Funny People:")
+print funny_people
+print ("Useful People:")
+print useful_people
+print ("Cool People:")
+print cool_people
 
-4) Do friends have similar ratings?
-5) Which businesses have higher/lower rating in terms of business category?
-6) Are there some attributes that affect on business rating?
+3) Do friends have similar ratings?
+4) Which businesses have higher/lower rating in terms of business category?
+#XQuery Code
+let $business := /root/business
+let $bus :=(
+for $x in $business
+where contains($x/categories, "IT")
+return $x)
+let $mean := avg($bus/review_count)
+let $s :=(
+for $d in $bus/review_count
+let $tmp := ($d - $mean)*($d - $mean)
+return $tmp
+)
+let $total :=  math:pow( (sum($s) div count($bus) ),0.5)
+let $top_percent := 3*$total
+let $result_id := $bus[stars = 5 and review_count >= $top_percent]/name|$bus[stars = 5 and review_count >= $top_percent]/city|$bus[stars = 5 and review_count >= $top_percent]/state|$bus[stars = 5 and review_count >= $top_percent]/review_count
+return $result_id
+
+5) Are there some attributes that affect on business rating?
 	ex: businesses with garage have higher rating than those with no garage
 	#XQuery Code
 	let  $business := /root/business
