@@ -19,7 +19,7 @@ data_folder = "/home/pal00007/Documents/big_data/CSCI5751/data"
 
 #https://www.geeksforgeeks.org/python-plotting-google-map-using-gmplot-package/
 gmap = gmplot.GoogleMapPlotter(37.428, -130.145, 4)
-gmap.apikey = 'AIzaSyArIFr43eixG87ARefxdcv06OohPrGwYfE'
+gmap.apikey = '..' #removing the api key 
 
 
 
