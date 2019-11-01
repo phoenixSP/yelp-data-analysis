@@ -8,40 +8,39 @@ Created on Fri Sep 20 10:19:01 2019
 import pandas as pd
 import json
 import numpy as np
+import os
+
 
 #%%
-#with open(r"C:/Users/shrey/Pictures/yelp_data_folder/business.json", "r", encoding='utf8', errors='ignore') as read_file:
-#    data = []
-#    for line in read_file:
-#        line_contents = json.loads(line)
-#        data.append(line_contents)
-#        
+data_folder = "/home/pal00007/Documents/big_data/data"
+
     
-#%%
     
 
-'''
-isnull = df.isnull()
-isnull_pos = []
-for i in range(isnull.shape[0]):
-    for j in range(isnull.shape[1]):
-        if isnull.iloc[i,j] == True:
-            isnull_pos.append([i,j])
 
-np_isnull_pos = np.array(isnull_pos)
-
-
-null_columns = np.unique(np_isnull_pos[:,1])
-
-#gives the names of the columns that have null values
-null_columns_names = [df.columns[i] for i in null_columns]
-'''
 
 #%%
 #columns which have null values and their count   
-business_df = pd.read_json (r"C:/Users/shrey/Pictures/yelp_data_folder/business.json", lines = True)
+business_df = pd.read_json (os.path.join(data_folder, "business.json"), lines = True)
 column_null_count = business_df.isnull().sum()
+#%%
+indexes = np.where(business_df.applymap(lambda x: x == ""))
+indexes_np = np.column_stack((indexes[0], indexes[1]))
 
+#number of address that have empty strings
+count_empty_address = len(indexes_np[ (indexes_np[:,1] == 2)])
+
+
+#number of city that have empty strings
+count_empty_city= len(indexes_np[ (indexes_np[:,1] == 3)])
+
+#number of postal code that have empty strings
+count_empty_postalcode= len(indexes_np[ (indexes_np[:,1] == 5)])
+
+##shorter code
+#np.unique(indexes_np[:,1], return_counts= True)
+
+#%%
 #city count 
 #city_count = business_df['city'].value_counts()
 
