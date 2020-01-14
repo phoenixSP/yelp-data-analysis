@@ -1,9 +1,16 @@
 import json
 import dicttoxml
 import sys
+import time
+import getpass
+import os
 ## This converts json object into xml object
 ## how to use: python json_to_xml [filename]
 ## filename could contain .json extension
+
+st = time.time()
+
+data_folder = "/home/pal00007/Documents/big_data/CSCI5751/data"
 
 source_dataset_path = "/home/pal00007/Documents/big_data/data_null/"
 target_dataset_path = "/home/pal00007/Documents/big_data/data_xml/"
@@ -30,3 +37,8 @@ for f in files:
 	print(f+" number of erros occured: " + str(error_counter))
 	print("-----Done "+f+" -----")
 	# subprocess.call(['mv',target_dataset_path + f+'_not_nulls.json','cleandata'])
+    
+    
+et = time.time()
+username = getpass.getuser()
+print(username, "clean_nulls.py", "converting json to xml, creating filename.xml", st, et, file= open(os.path.join(data_folder,'provenance.txt'), 'a'))

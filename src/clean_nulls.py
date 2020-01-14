@@ -3,7 +3,12 @@ import numpy as np
 import pandas as pd
 import subprocess
 import os
+import time 
+import getpass
 
+st = time.time()
+
+data_folder = "/home/pal00007/Documents/big_data/CSCI5751/data"
 source_dataset_path = "/home/pal00007/Documents/big_data/data/"
 target_dataset_path = "/home/pal00007/Documents/big_data/data_null/"
 
@@ -26,4 +31,8 @@ for f in files:
         review_df = pd.DataFrame([])
         
     print(f+"_not_nulls.json size without NULLs: "+str(os.path.getsize(target_dataset_path + f+'_no_nulls.json')))
-    # subprocess.call(['mv',target_dataset_path + f+'_not_nulls.json','cleandata'])
+    # subprocess.call(['mv',target_dataset_path + f+'_not_nulls.json','cleandata'])#code related to provenance
+
+et = time.time()
+username = getpass.getuser()
+print(username, "clean_nulls.py", "cleaning nulls from all jsons, creating filename_no_nulls.json", st, et, file= open(os.path.join(data_folder,'provenance.txt'), 'a'))

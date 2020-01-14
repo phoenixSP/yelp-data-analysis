@@ -1,0 +1,5 @@
+pal00007 clean_nulls.py cleaning nulls from all jsons, creating filename_no_nulls.json 1572639413.8767674 1572639425.3584185
+pal00007 clean_nulls.py converting json to xml, creating filename.xml 1572639632.191939 1572639705.5141659
+pal00007 advanced2_processing.py creating business_latlong_json.json and business_latlong_text.json 1572637813.5465379 1572637835.6813471
+pal00007 advanced2_processing.py creating business_latlong_json.json and business_latlong_text.json 1572637904.6380394 1572637904.6380396
+pal00007 advanced2_processing.py creating business_latlong_json.json and business_latlong_text.json 1572638026.9262087 1572638048.5160627

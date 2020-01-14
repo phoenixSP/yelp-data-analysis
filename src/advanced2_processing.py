@@ -14,9 +14,7 @@ from mlxtend.frequent_patterns import apriori, association_rules
 import time 
 import getpass
 from collections import defaultdict
-import gmplot 
-
-#%%
+import json 
 
 st = time.time()
 
@@ -26,20 +24,6 @@ extracted_info = "advanced2.xml"
 extracted_business_info = os.path.join(data_folder, extracted_info)
 
 tree = ET.parse(extracted_business_info)
-
-#%%
-
-root = tree.getroot()
-
-all_categories = set()
-
-for child in tree.iter('categories'):
-    cat = child.text.split(",")
-    #print(cat)
-    for e in cat: 
-        all_categories.add(e.strip())
-            
-#%%
         
 all_categories_list = []
 
@@ -51,11 +35,6 @@ for child in tree.iter('categories'):
     
     cat = list(map(strip, cat))
     all_categories_list.append(cat)
-    
-    
-    business_latlong
-#%%
-
 
 te = TransactionEncoder()
 te_ary = te.fit(all_categories_list).transform(all_categories_list)
@@ -63,21 +42,18 @@ df = pd.DataFrame(te_ary, columns=te.columns_)
 frequent_itemsets = apriori(df, min_support=0.01, use_colnames=True)   
 frequent_itemsets['length'] = frequent_itemsets['itemsets'].apply(lambda x: len(x))
 
-#%%
-subset_1 = frequent_itemsets[ (frequent_itemsets['length'] == 1) & (frequent_itemsets['support'] >= 0.01)]
-
-#%%
+#subset_1 = frequent_itemsets[ (frequent_itemsets['length'] == 1) & (frequent_itemsets['support'] >= 0.01)]
 
 res = association_rules(frequent_itemsets, metric="confidence", min_threshold=1)
-
-#%%
 res['consequent_len'] = res['consequents'].apply(lambda x: len(x))
+
+#extracting the data where length of the consequent is 1
 res_1 = res[ (res['consequent support'] >= 0.05) & (res['consequent_len'] == 1) ]
 
-#%%
-
+#extracting
 main_categories = res_1['consequents'].tolist()
-#%%business_latlong
+
+#business_latlong
 new_list = []
 for e in main_categories:
     (x), = e
@@ -85,14 +61,6 @@ for e in main_categories:
     
 new_list = set(new_list)
 
-#%%
-
-for i, child in enumerate(tree.iter()):
-    print(i)
-    print(child.tag)
-
-
-#%%
 
 business_latlong = defaultdict(list)
 
@@ -108,22 +76,19 @@ for child in root:
         loc = [lat, long]
         
         business_latlong[high_level_category].append(loc)
-#%%
-import json 
+
+
 file = json.dumps(business_latlong)
-f = open(os.path.join(data_folder, "business_latlong_json.json"), "w")
+f = open(os.path.join(data_folder, "business_latlong_json1.json"), "w")
 f.write(file)
 f.close()
 
-f = open(os.path.join(data_folder, "business_latlong_txt.txt"), "w")
+f = open(os.path.join(data_folder, "business_latlong_txt1.txt"), "w")
 f.write(str(business_latlong))
 f.close()
-#%%
-from mpl_toolkits.basemap import Basemap
 
-#%%
 
 #code related to provenance
 et = time.time()
 username = getpass.getuser()
-print(username, "advanced2_processing.py", st, et, file= open('provenance.txt', 'a'))
+print(username, "advanced2_processing.py", "creating business_latlong_json.json and business_latlong_text.json", st, et, file= open(os.path.join(data_folder,'provenance.txt'), 'a'))
